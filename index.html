@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Jack-o'-Lantern H</title>
+<meta name="description" content="Handshake's H, carved into a lime pumpkin. A Halloween logo entry with a 3D easter egg you can carve yourself.">
+<meta property="og:title" content="The Jack-o'-Lantern H: Carved in One Shot">
+<meta property="og:description" content="Handshake's H, carved into a lime pumpkin. Click the icon and it carves itself in 3D.">
+<meta property="og:image" content="https://soy-praveen.github.io/jack-o-lantern-h/media/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="logo/favicon-64.png">
+<link rel="apple-touch-icon" href="logo/apple-touch-icon.png">
+<style>
+  :root {
+    --bg: #031a1d; --bg-2: #052326; --panel: #072d31; --line: #134a50;
+    --text: #eef8e6; --muted: #9dbdb3; --lime: #d3fb52; --cream: #fcfa96; --teal: #052326;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #031a1d; --text: #eef8e6; } }
+  :root[data-theme="dark"] { --bg: #031a1d; --text: #eef8e6; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: radial-gradient(1200px 700px at 50% -10%, #0d3c41 0%, var(--bg) 60%) var(--bg);
+    color: var(--text); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--lime); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  header { display: flex; align-items: center; gap: 12px; padding: 22px 0 8px; }
+  header img { width: 40px; height: 40px; border-radius: 10px; }
+  header span { color: var(--muted); font-size: 14px; }
+  .hero { padding: 26px 0 8px; text-align: center; }
+  h1 { font-size: clamp(34px, 6vw, 60px); line-height: 1.04; margin: 0 0 14px; letter-spacing: -1px; }
+  h1 em { font-style: normal; color: var(--lime); }
+  .lede { color: var(--muted); font-size: clamp(16px, 2.2vw, 19px); max-width: 640px; margin: 0 auto 26px; }
+  .video { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid var(--line);
+    box-shadow: 0 30px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(211,251,82,.06); background: #000; }
+  .video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 26px 0 8px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 999px;
+    font-weight: 700; font-size: 17px; text-decoration: none; border: 2px solid var(--lime); transition: transform .15s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: var(--lime); color: var(--teal); }
+  .btn.ghost { color: var(--lime); }
+  .btn svg { width: 20px; height: 20px; }
+  .hint { color: var(--muted); font-size: 13.5px; text-align: center; margin: 4px 0 0; }
+  section { padding: 56px 0 8px; }
+  h2 { font-size: 26px; margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 22px; }
+  .logo-row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 26px; align-items: center; }
+  @media (max-width: 760px) { .logo-row { grid-template-columns: 1fr; } }
+  .logo-big { width: 100%; max-width: 420px; border-radius: 22%; display: block; margin: 0 auto; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+  .sizes { display: flex; flex-direction: column; gap: 14px; }
+  .strip { display: flex; align-items: center; gap: 22px; padding: 20px 24px; border-radius: 16px; flex-wrap: wrap; }
+  .strip.light { background: #ffffff; } .strip.dark { background: #000000; }
+  .strip img { border-radius: 22%; display: block; }
+  .points { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .points li { padding-left: 26px; position: relative; color: #d6e9dc; }
+  .points li::before { content: ""; position: absolute; left: 4px; top: 9px; width: 10px; height: 10px; border-radius: 3px; background: var(--lime); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .dl { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border-radius: 14px; background: var(--panel);
+    border: 1px solid var(--line); text-decoration: none; color: var(--text); transition: border-color .15s; }
+  .dl:hover { border-color: var(--lime); }
+  .dl b { font-size: 15.5px; } .dl span { color: var(--muted); font-size: 13.5px; }
+  .dl.zip { background: linear-gradient(135deg, rgba(211,251,82,.16), rgba(211,251,82,.04)); border-color: rgba(211,251,82,.5); }
+  footer { color: var(--muted); font-size: 13.5px; padding: 56px 0 40px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="logo/jack-o-lantern-h-1024.png" alt="">
+    <span>Handshake AI Skills Studio · Halloween logo challenge entry</span>
+  </header>
+
+  <div class="hero">
+    <h1>The Jack-o'-Lantern H<br><em>Carved in One Shot</em></h1>
+    <p class="lede">Handshake's H, carved into a lime pumpkin in the real brand shape and colours. It's built as an app icon, with a 3D easter egg: tap the icon and it carves itself.</p>
+    <div class="video">
+      <video src="media/easter-egg.mp4" poster="media/poster.jpg" autoplay muted loop playsinline controls preload="metadata"></video>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="carve.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="7"/><path d="M12 2v5M12 17v5M2 12h5M17 12h5"/></svg>
+        Carve it yourself
+      </a>
+      <a class="btn ghost" href="download/jack-o-lantern-h-package.zip">Download everything</a>
+    </div>
+    <p class="hint">The 3D pumpkin runs in your browser: drag to spin it, then take the shot. Works on phones too.</p>
+  </div>
+
+  <section>
+    <h2>The logo</h2>
+    <p class="sub">The main entry: a flat icon you could ship as Handshake's Halloween app icon.</p>
+    <div class="logo-row">
+      <img class="logo-big" src="logo/jack-o-lantern-h-1024.png" alt="The Handshake H carved into a lime pumpkin on a dark teal tile">
+      <div>
+        <div class="sizes">
+          <div class="strip light"><img src="logo/jack-o-lantern-h-1024.png" width="96" height="96" alt=""><img src="logo/jack-o-lantern-h-1024.png" width="56" height="56" alt=""><img src="logo/jack-o-lantern-h-1024.png" width="32" height="32" alt=""><img src="logo/jack-o-lantern-h-1024.png" width="20" height="20" alt=""></div>
+          <div class="strip dark"><img src="logo/jack-o-lantern-h-1024.png" width="96" height="96" alt=""><img src="logo/jack-o-lantern-h-1024.png" width="56" height="56" alt=""><img src="logo/jack-o-lantern-h-1024.png" width="32" height="32" alt=""><img src="logo/jack-o-lantern-h-1024.png" width="20" height="20" alt=""></div>
+        </div>
+        <ul class="points">
+          <li>The H keeps its slant and proportions; it's the carving itself.</li>
+          <li>Only Handshake lime and dark teal, plus cream for the cut flesh.</li>
+          <li>Reads at any size, on light or dark backgrounds.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Downloads</h2>
+    <p class="sub">Everything in one place.</p>
+    <div class="grid">
+      <a class="dl zip" href="download/jack-o-lantern-h-package.zip"><b>Full package (.zip)</b><span>Logo, videos, cover and the 3D page</span></a>
+      <a class="dl" href="logo/jack-o-lantern-h-2048.png" download><b>Logo, PNG 2048</b><span>Main icon</span></a>
+      <a class="dl" href="logo/jack-o-lantern-h.svg" download><b>Logo, SVG</b><span>Vector master</span></a>
+      <a class="dl" href="media/easter-egg.mp4" download><b>Easter-egg video</b><span>1080p · with sound</span></a>
+      <a class="dl" href="media/blast.mp4" download><b>3D blast video</b><span>1080p · with sound</span></a>
+      <a class="dl" href="carve.html"><b>Interactive 3D</b><span>Opens in your browser</span></a>
+    </div>
+  </section>
+
+  <footer>
+    Made for the Handshake AI Skills Studio Halloween challenge.<br>
+    Logo generated with ChatGPT; 3D model, animation and video built with Claude and three.js. Not an official Handshake page.
+  </footer>
+</div>
+</body>
+</html>
