@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Jack-o'-Lantern H | single-file build by build/bundle.mjs | 2026-10-22T15:48:01.719Z | geometry build baa28a2de5385967 | skin 1.1.0 -->
+<!-- Jack-o'-Lantern H | single-file build by build/bundle.mjs | 2026-10-22T16:59:52.307Z | geometry build baa28a2de5385967 | skin 1.1.0 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -1545,6 +1545,8 @@ return decodeGeo;
 //   framing=logo   QA only: use the geometry's exact hero frustum (with a square viewport = the logo frame)
 //   fx=0           QA only: no flash, rings, reticle or shake (lets you diff the intact -> carved swap frame)
 //   qa=1           QA only: expose the internals as window.__dbg (motion/penetration reports)
+//   spin=<rad/s>   capture only: the intact pumpkin spins about its vertical axis, then decelerates (spinEase=<s>,
+//                  default 0.7) to face front exactly at the trigger (fireAt - 0.25 s). Absent = no spin.
 // Capture determinism: physics runs at a fixed 1/480 s sim step and everything it reads (the pumpkin's pose,
 // launches, collisions) is a pure function of the step's time, so a frame at time t is identical whatever
 // frame schedule led to it (dense, sparse, any fps, or a fresh session).
@@ -1569,6 +1571,7 @@ const FORCE_STANDIN = Q.get("standin") === "1";
 const LOGO_FRAMING = Q.get("framing") === "logo";   // QA: the geometry's exact hero frustum (square viewport = the 2D logo frame)
 const NO_FX = Q.get("fx") === "0";                  // QA: no flash / rings / reticle / shake (to diff the swap frame)
 const QA = Q.get("qa") === "1";
+const SPIN = CAPTURE && Q.has("spin") ? parseFloat(Q.get("spin")) || 0 : 0;   // capture only: yaw spin (rad/s) before the shot
 
 const BRAND = { lime: "#D3FB52", teal: "#052326", cream: "#FCFA96" };
 const MATERIAL_ORDER = ["skin", "etch", "cut", "interior", "stem"];
@@ -3493,9 +3496,19 @@ function createApp(GEO) {
     blob.material.opacity = 0.62 - h * 3.2;
   }
 
+  // spin=<rad/s> (capture only): constant spin, then a constant deceleration over SPIN_EASE that ends facing front
+  // (yaw 0, at rest) at the trigger, so the aim, the impact and every launch see the usual yaw-0 pose.
+  const SPIN_EASE = Q.has("spinEase") ? Math.max(0.05, parseFloat(Q.get("spinEase")) || 0.7) : 0.7;
+  function spinYaw(t) {
+    if (FIRE_AT == null) return SPIN * t;
+    const t1 = FIRE_AT - AIM, t0 = t1 - SPIN_EASE;
+    if (t >= t1 || st.phase !== "idle") return 0;
+    if (t >= t0) return (-SPIN * (t1 - t) * (t1 - t)) / (2 * SPIN_EASE);
+    return SPIN * (t - t0) - (SPIN * SPIN_EASE) / 2;
+  }
   const wrapYaw = (a) => (a > Math.PI || a < -Math.PI ? a - TAU * Math.round(a / TAU) : a);
   function updateInput(dt, t) {
-    if (CAPTURE) return;
+    if (CAPTURE) { if (SPIN && !warming) st.yaw = spinYaw(t); return; }
     const lock = st.phase === "aim" || st.phase === "blast" || st.phase === "rewind";
     if (st.phase === "aim" && st.snapFrom) {
       const k = easeOutCubic((t - st.tTrig) / (AIM * 0.9));
